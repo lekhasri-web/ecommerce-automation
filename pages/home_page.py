@@ -10,7 +10,5 @@ class HomePage:
     def heading(self):
         return self.page.get_by_role("heading",name="Full-Fledged practice website for Automation Engineers")
     
-    def page_title_validation(self):
-        return self.page.title()
     
     

@@ -1,0 +1,16 @@
+#test reports
+report.html
+
+#screenshots folder
+screenshots/
+
+#python cache
+__pycache__/
+*.pyc
+
+#virtual environment
+venv/
+.venv/
+
+#pytest cache
+.pytest_cache/

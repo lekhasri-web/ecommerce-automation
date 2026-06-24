@@ -2,7 +2,7 @@ import pytest
 from playwright.sync_api import sync_playwright
 
 @pytest.fixture(scope="function")
-def human_page_fixture():
+def page():
     with sync_playwright() as p:
         # 1. Launch a visible browser
         browser = p.chromium.launch(headless=False)

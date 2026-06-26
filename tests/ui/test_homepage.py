@@ -1,4 +1,4 @@
-from playwright.sync_api import Page,expect
+from playwright.sync_api import expect
 from pages.home_page import HomePage
 
 def test_homepage_loads_successfully(page):

@@ -14,3 +14,4 @@ def page():
 
         context.close()
         browser.close()
+

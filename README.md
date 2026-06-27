@@ -22,9 +22,10 @@ ecommerce-automation/
 ## Test coverage
 - Homepage load validation
 - Login — valid, invalid, blank credentials
+- Signup - new user full registration, existing email error
 
 ## How to run
-pip install -r requirements.txt
+pip install -r requirements.txt 
 playwright install
 pytest tests/ -v
 

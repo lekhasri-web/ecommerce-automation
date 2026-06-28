@@ -1,8 +1,9 @@
 from playwright.sync_api import expect
 from pages.signup_page import SignupPage
-from pages.login_page import LoginPage
 import uuid
+import pytest
 
+@pytest.mark.smoke
 def test_signup(page):
     signpage = SignupPage(page)
     signpage.navigate()
@@ -13,6 +14,7 @@ def test_signup(page):
     signpage.enter_signup_details("Test@1234", 9, "September", 2000, "Test", "User", "TestCo", "123 Test St", "India", "Karnataka", "Bangalore", 560001, "9999999999")
     expect(page).to_have_url("https://automationexercise.com/account_created")
     
+@pytest.mark.regression
 def test_invalid_signup(page):
     signpage = SignupPage(page)
     signpage.navigate()

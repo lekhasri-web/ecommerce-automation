@@ -19,15 +19,20 @@ ecommerce-automation/
 ├── conftest.py    # Pytest fixtures
 └── pytest.ini     # Pytest configuration
 
+
 ## Test coverage
 - Homepage load validation
 - Login — valid, invalid, blank credentials
-- Signup - new user full registration, existing email error
+- Signup — new user registration (dynamic email), existing email error
+- Products — logged in view, logged out view, product count validation
 
 ## How to run
-pip install -r requirements.txt 
+pip install -r requirements.txt
 playwright install
 pytest tests/ -v
 
 ## Run only smoke tests
 pytest -m smoke -v
+
+## Run only regression tests
+pytest -m regression -v

@@ -1,11 +1,12 @@
 import pytest
 from playwright.sync_api import sync_playwright
-
+import os
 @pytest.fixture(scope="function")
 def page():
     with sync_playwright() as p:
-        # 1. Launch a visible browser
-        browser = p.chromium.launch(headless=False)
+        # 1. Launch a visible browser\
+        headless = os.getenv("CI","false") == "true"
+        browser = p.chromium.launch(headless=headless)
         #create a human disguised browser context
         context = browser.new_context()
         page = context.new_page()

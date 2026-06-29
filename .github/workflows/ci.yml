@@ -1,25 +1,25 @@
 name: CI/CD_demo
 
-on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+on: #when
+    push:                    #push action happened
+        branches: [main]      #run on main branch
+    pull_request:             #for pull also 
+        branches: [main]      #run on main branch
 
-jobs:                  # what to do
-  test:
+jobs:                         # what to do
+  test:                       #run this test
     runs-on: ubuntu-latest    # which machine
-    steps:                    # sequence of commands
-      - name: checkout code
-        uses: actions/checkout@v4 
-      - name: setup python
-        uses: actions/setup-python@v4
-        with:
-         python-version: '3.11'
-        # Install dependencies
-      - run: pip install -r requirements.txt
-
-      # Install Playwright
+    steps:                               # sequence of commands
+      - name: checkout code             # simple name for tracking
+        uses: actions/checkout@v4        # this is a github action to import your code
+      - name: setup python               #name
+        uses: actions/setup-python@v4   #to install python
+        with: 
+         python-version: '3.11'        #only with 3.11 version
+        # Install dependencies 
+      - run: pip install -r requirements.txt        #installing requirements and packages
+ 
+      # Install Playwright browsers
       - run: playwright install chromium
 
       # Run tests

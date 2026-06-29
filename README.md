@@ -1,3 +1,5 @@
+[![CI/CD_demo](https://github.com/lekhasri-web/ecommerce-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/lekhasri-web/ecommerce-automation/actions/workflows/ci.yml)
+
 # Ecommerce Automation Framework
 
 End-to-end test automation framework built with Playwright and Python,

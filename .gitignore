@@ -14,3 +14,6 @@ venv/
 
 #pytest cache
 .pytest_cache/
+
+#screenshots
+screenshots/*.png

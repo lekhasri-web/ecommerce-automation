@@ -2,6 +2,7 @@ from playwright.sync_api import expect
 from pages.signup_page import SignupPage
 import uuid
 import pytest
+from config import BASE_URL,TEST_EMAIL,TEST_PASSWORD
 
 @pytest.mark.smoke
 def test_signup(page):
@@ -18,6 +19,6 @@ def test_signup(page):
 def test_invalid_signup(page):
     signpage = SignupPage(page)
     signpage.navigate()
-    signpage.enter_name_email("Dharani","Dharani99@gmail.com")
+    signpage.enter_name_email(TEST_EMAIL,TEST_PASSWORD)
     expect(page.locator('p[style="color: red;"]')).to_be_visible()
     expect(page.locator('p[style="color: red;"]')).to_have_text("Email Address already exist!")

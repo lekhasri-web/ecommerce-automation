@@ -18,7 +18,7 @@
 
 ## Endpoint: POST /api/search_product
 - Method: POST
-- Full URL: https://automationexercise.com/api/brandsList
+- Full URL:  https://automationexercise.com/api/searchProduct
 - Response code: 200
 - Response structure: {"responseCode": 200, "products": [{"id": 1, "name": "Blue Top", "price": "Rs. 500", "brand": "Polo", "category":
 {"usertype": {"usertype": "Women"}, "category": "Tops"}}

@@ -43,3 +43,8 @@ pytest -m regression -v # 5 full coverage tests
 - Screenshot on failure — auto-captured in screenshots/ folder
 - Environment variables — credentials never hardcoded
 - Dynamic test data — uuid generated emails for signup tests
+
+## CI/CD
+- GitHub Actions runs on every push to main
+- UI smoke tests + full API test suite
+- Both pass in under 40 seconds

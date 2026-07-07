@@ -24,3 +24,7 @@ jobs:                         # what to do
 
       # Run tests
       - run: pytest -m smoke -v
+
+      # Run API tests
+      - run: pytest tests/api -v
+      

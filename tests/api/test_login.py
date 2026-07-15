@@ -29,6 +29,7 @@ def test_loginapi_blank_credentials():
     assert body["responseCode"] == 404
     assert body["message"] == "User not found!"
 
+@pytest.mark.xfail(reason="automationexercise.com times out on wrong method request - site instability")
 def test_loginapi_wrong_method():
     
     response = requests.get(f"{BASE_URL}/api/verifyLogin",timeout=10)

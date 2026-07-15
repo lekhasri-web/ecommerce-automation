@@ -6,6 +6,6 @@ class ProductsPage:
                 self.page = page
         
         def navigate(self):
-            self.page.goto(BASE_URL + "/products",timeout = 60000)
+            self.page.goto(BASE_URL + "/products")
     
         

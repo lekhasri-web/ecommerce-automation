@@ -17,4 +17,10 @@ class LoginPage:
         self.page.locator('input[data-qa="login-email"]').fill(email)
         self.page.locator('input[data-qa="login-password"]').fill(password)
         self.page.locator('button[data-qa="login-button"]').click()
+
+    #getting error message
+    def get_error_message(self):
+        return self.page.locator('p').nth(0).inner_text()
+    
+
     

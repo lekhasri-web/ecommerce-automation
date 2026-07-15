@@ -1,7 +1,6 @@
 import requests
 import pytest
 from config import BASE_URL
-import conftest
 
 def test_productlist(product_response):
 

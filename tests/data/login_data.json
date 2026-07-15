@@ -1,0 +1,5 @@
+[
+    {"email": "invalid@gmail.com", "password": "wrongpass", "expected": "Your email or password is incorrect!","id": "wrong_credentials"},
+    {"email": "invalid@gmail.com", "password": "Test@1234", "expected": "Your email or password is incorrect!","id" : "invalid_email"},
+    {"email": "admin@admin.com",   "password": "admin",     "expected": "Your email or password is incorrect!"}
+]

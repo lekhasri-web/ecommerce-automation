@@ -10,4 +10,5 @@ def product_response():
 @pytest.fixture(scope="session")
 def brand_response():
     response = requests.get(f"{BASE_URL}/api/brandsList",timeout=10)
-    return response
+    return response  
+

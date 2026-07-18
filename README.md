@@ -46,7 +46,7 @@ This framework tests core user flows on automationexercise.com — an e-commerce
 
 
 
-## Test coverage (31 tests)
+## Test coverage (32 tests)
 - **UI tests (12)** — homepage load, login (valid/invalid/blank), signup (new user/existing email), products (logged in/logged out/count), performance baseline (homepage/login/products), data driven login (3 scenarios)
 - **API tests (11)** — products list (status/schema/fields), brands list (status/fields), search product (results/keyword validation), login API (valid/invalid/blank/wrong method)
 - **Cross-layer tests (2)** — first product from API verified in UI, first brand from API verified in UI

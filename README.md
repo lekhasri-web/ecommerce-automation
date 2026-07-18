@@ -25,7 +25,8 @@ This framework tests core user flows on automationexercise.com — an e-commerce
 
 
 ## Project structure
-ecommerce-automation/
+```ecommerce-automation/
+
 ├── pages/          # Page Object classes
 ├── tests/
 │   ├── api/        # API test files
@@ -41,14 +42,16 @@ ecommerce-automation/
 └── requirements.txt   # requirements 
 └── DECISIONS.md       # decisions explained
 └── Test_PLAN.md       # requirements 
+```
 
 
 
-## Test coverage (27 tests)
+## Test coverage (31 tests)
 - **UI tests (12)** — homepage load, login (valid/invalid/blank), signup (new user/existing email), products (logged in/logged out/count), performance baseline (homepage/login/products), data driven login (3 scenarios)
 - **API tests (11)** — products list (status/schema/fields), brands list (status/fields), search product (results/keyword validation), login API (valid/invalid/blank/wrong method)
 - **Cross-layer tests (2)** — first product from API verified in UI, first brand from API verified in UI
 - **Performance tests (3)** — homepage, login page, products page load time assertions
+- **Json schema validation tests (4)** - product response,individual product schema,brand response, individual brand schema
 
 
 ## Framework features

@@ -10,7 +10,7 @@ def page():
     with sync_playwright() as p:
         # 1. Launch a visible browser\
         headless = os.getenv("CI","false") == "true"
-        browser = p.chromium.launch()
+        browser = p.chromium.launch(headless=headless)
         logger.info("browser launched")
         #create a human disguised browser context
         context = browser.new_context(

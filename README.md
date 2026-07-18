@@ -83,6 +83,4 @@ pytest tests/ui/test_performance.py -v  # Performance tests only
 See [DECISIONS.md](DECISIONS.md) for framework architecture decisions.
 
 ## Demo
-Loom walkthrough video — coming Day 23
-
-
+[Framework walkthrough video](https://www.loom.com/share/77b18dd0c65249acaf0b4df6e8aa222e) — 3 min overview of framework structure, test execution, and CI/CD pipeline

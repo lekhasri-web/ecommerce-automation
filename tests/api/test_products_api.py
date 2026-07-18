@@ -52,5 +52,4 @@ def test_searchlist():
 @pytest.mark.xfail(reason="API returns 200 for empty search keyword — missing input validation, expected 400")
 def test_searchlist_empty_keyword():
     response = requests.post(f"{BASE_URL}/api/searchProduct", data={"search_product": ""}, timeout=10)
-    print(response.json())
     assert response.status_code == 400

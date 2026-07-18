@@ -8,9 +8,7 @@ def test_loginapi_valid_Credentials():
     response = requests.post(f"{BASE_URL}/api/verifyLogin",data={"email": TEST_EMAIL, "password": TEST_PASSWORD},timeout=10)
     assert response.status_code == 200
     body = response.json()
-    print(response.status_code)
     assert body["responseCode"] == 200
-    print(response.text)
     assert body["message"] == "User exists!"
 
 def test_loginapi_invalid_credentials():

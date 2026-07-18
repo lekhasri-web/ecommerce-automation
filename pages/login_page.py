@@ -26,7 +26,5 @@ class LoginPage:
 
     #getting error message
     def get_error_message(self):
-        return self.page.locator('p').nth(0).inner_text()
-    
-
+        return self.page.locator('p[style="color: red;"]').inner_text()
     

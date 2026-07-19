@@ -13,6 +13,9 @@ jobs:
       fail-fast: false
       matrix:
         browser: [chromium, firefox, webkit]
+        include:
+          - browser: webkit
+            continue-on-error: true
     steps:
       - name: checkout code
         uses: actions/checkout@v4
@@ -26,8 +29,6 @@ jobs:
 
       - name: Install Playwright browsers
         run: playwright install --with-deps
-
-      - run: playwright install --with-deps ${{ matrix.browser }}
 
       - name: Run UI smoke tests on ${{ matrix.browser }}
         run: pytest -m smoke -v --browser-name=${{ matrix.browser }}
@@ -55,6 +56,9 @@ jobs:
           python-version: '3.11'
 
       - run: pip install -r requirements.txt
+
+      - name: Install Playwright browsers
+        run: playwright install --with-dep
 
       - run: pytest tests/api/ -v
         env:

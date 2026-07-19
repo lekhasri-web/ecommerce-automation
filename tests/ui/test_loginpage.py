@@ -27,4 +27,4 @@ def test_loginpage_blank_credentails(page):
     loginpage.enter_credentials("","")
     email_input = page.locator('input[data-qa="login-email"]')
     validation_message = email_input.evaluate("el => el.validationMessage")
-    assert "please fill out this field" in validation_message.lower()
+    assert "fill out this field" in validation_message.lower()

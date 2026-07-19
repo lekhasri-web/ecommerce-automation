@@ -5,13 +5,22 @@ from utils.logger import get_logger
 
 logger = get_logger(__name__)
 
+def pytest_addoption(parser):
+    parser.addoption(
+        "--browser-name",
+        action="store",
+        default="chromium",
+        help="Browser engine to run tests against: chromium, firefox, or webkit",
+    )
+
 @pytest.fixture(scope="function")
-def page():
+def page(request):
+    browser_name = request.config.getoption("--browser-name")
     with sync_playwright() as p:
-        # 1. Launch a visible browser\
         headless = os.getenv("CI","false") == "true"
-        browser = p.chromium.launch(headless=headless)
-        logger.info("browser launched")
+        browser_type = getattr(p, browser_name)
+        browser = browser_type.launch(headless=headless)
+        logger.info(f"{browser_name} browser launched")
         #create a human disguised browser context
         context = browser.new_context(
         viewport={"width": 1280, "height": 720},
@@ -27,12 +36,13 @@ def page():
         logger.info("browser is closed")
 
 @pytest.hookimpl(tryfirst=True,hookwrapper=True)
-def pytest_runtest_makereport(item,call):
+def pytest_runtest_makereport(item, call):
     outcome = yield
     report = outcome.get_result()
     if report.when == "call" and report.failed:
         page = item.funcargs.get("page")
         if page:
-            page.screenshot(path=f"screenshots/{item.name}.png")
-            logger.error(f"Test failed: {item.name} - screenshot captured")
-    
+            try:
+                page.screenshot(path=f"screenshots/{item.name}.png", timeout=5000)
+            except Exception as e:
+                logger.warning(f"Could not capture screenshot for {item.name}: {e}")

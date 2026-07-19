@@ -7,8 +7,12 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  ui-tests:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
     steps:
       - name: checkout code
         uses: actions/checkout@v4
@@ -20,12 +24,34 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - run: playwright install chromium
+      - run: playwright install --with-deps ${{ matrix.browser }}
 
-      - run: pytest -m smoke -v
+      - name: Run UI smoke tests on ${{ matrix.browser }}
+        run: pytest -m smoke -v --browser-name=${{ matrix.browser }}
         env:
           TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
           TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+
+      - name: Upload screenshots on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots-${{ matrix.browser }}
+          path: screenshots/
+          retention-days: 7
+
+  api-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - run: pip install -r requirements.txt
 
       - run: pytest tests/api/ -v
         env:

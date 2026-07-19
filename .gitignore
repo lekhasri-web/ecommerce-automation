@@ -17,3 +17,6 @@ venv/
 
 #screenshots
 screenshots/*.png
+
+#environment file
+.env
